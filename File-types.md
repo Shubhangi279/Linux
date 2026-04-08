@@ -1,74 +1,50 @@
-# Linux Core Concepts
+# File Types in Linux
 
-- Take me to the [Video Tutorial](https://kodekloud.com/topic/linux-kernel/)
+- Take me to the [Video Tutorial](https://kodekloud.com/topic/file-types/)
 
-In this section, we will take a look at the core concepts of a linux operating system.
-- We will start with introduction to the linux kernel.
-- We will then learn about the kernel space and user space.
+In this section, we will take a look at different types of files in linux.
+- Everything is a file in Linux. 
+  - Every object in linux can be considered to be a type of file, even a directory for example is a special type of file.
 
-## Linux Kernel
+There are three types of files.
+1. Regular File
+1. Directory
+1. Special Files
 
-#### If you have worked with any operating system, you have run into the term kernel. 
+![file-types](../../images/file-types.PNG)
 
-- The Linux kernel is monolithic, this means that the kernel carrries out CPU scheduling, memory management and several operations by itselfs. 
-- The Linux Kernel is also modular, which means it can extends its capabilities through the use of dynamically loaded kernel modules
-
-  ![linux-kernel](../../images/linux-kernel.PNG)
-
-#### To understand a kernel in simple terms, let us use an analogy of a **`College Library`**. Here the librarian is equal to Linux Kernel.
-
-![library](../../images/library.PNG)
-
-#### The Kernel is responsible for 4 major tasks
-
-1. Memory Management
-1. Process Management
-1. Device Drivers
-1. System calls and Security
-
-## Linux Kernel Versions
-
-#### let us know identify the ways to identify linux kernel versions
-
-Use **`uname`** command to get the information about the kernel (by itself it doesn't provide much information except that the system uses the **`Linux`** Kernel.
-```
-$ uname
-```
-
-Use the **`uname -r`** or **`uname`** comamnd and option to print the kernel version
-```
-$ uname -r
-$ uname -a
-```
-   ![kernel-versions](../../images/kernel-versions.PNG)
-
-## Kernel and User Space
-
-#### One of the important functions of the linux kernel is the **`Memory Management`** . We will now see how memory is seperated within the linux kernel
-
-Memory is divded into two areas.
-1. Kernel Space
-   1. Kernel Code
-   1. kernel Extensions
-   1. Device Drivers
-1. User Space
-   1. C
-   1. Java
-   1. Python
-   1. Ruby e.t.c
-   1. Docker Containers
+**`Special files`** are again catagorized into five other file types.
+1. Character Files
+   - These files represent devices under the **`/dev`** file system.
+   - Examples include the devices such as the **`keyboard`** and **`mouse`**.
+1. Block Files
+   - These files represent block devices also located under **`/dev/`** file system.
+   - Examples include the **`harddisks`** and **`RAM`**
+1. Links
+   - Links in linux is a way to associate two or more file names to the same set of file data.
+   - There are two types of links
+     - The Hard Link 
+     - The Soft Link
+1. Sockets
+   - A sockets is a special file that enables the communication between two processes.
+1. Named Pipes
+   - The Named Pipes is a special type of file that allows connecting one process as an input to another  
    
-![memory-management](../../images/memory-management.PNG)
+     ![file-types1](../../images/file-types1.PNG)
+     
+#### Let us now see how to identify different file types in Linux.
+ 
+One way to identify a file type is by making use of the **`file`** command. 
+```
+$ file /home/michael
+$ flle bash-script.sh
+$ file insync1000.sock
+$ file /home/michael/bash-script
+```
 
-#### Let us know see how programs running in the `User Space` work
-
-All user programs function by manipulating data that is stored in memory and on disk. User programs get access to data by making special request to the kernel called **`System Calls`**
-- Examples include, allocating memory by using variables or opening a file.
-
-  ![user-space](../../images/user-space.PNG)
-
-- For example, opening a file such as the **`/etc/os-release`** to see the operating system installed, results in a **`system call`**
-
-  ![user-space1](../../images/user-space1.PNG)
-
-
+Another way to identify a file type is by making use of the **`ls -ld`** command
+```
+ls -ld /home/michael
+ls -l basg-script.sh
+```
+   ![file-types2](../../images/file-types2.PNG)
